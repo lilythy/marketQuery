@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>进销存查询网站</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<script type="text/javascript">
+function namechk()
+{
+    var x=document.getElementById("username").value;
+	var tr1 = document.getElementById("username");
+    if(x==""){
+	    alert("请输入用户昵称！");
+		window.setTimeout(function(){tr1.focus();}, 0);
+	}else if(!x.match( /^[\u4E00-\u9FA5a-zA-Z0-9_]{3,20}$/)){
+		    alert("用户名只能填写英文字母与数字与下划线，3-20位");
+			window.setTimeout(function(){tr1.focus();}, 0);
+	}
+}
+
+function chkpword1(){
+    var psword1 = document.getElementById("password1");
+	var password1 = psword1.value;
+	if(password1 == ""){
+	    alert("请输入密码！");
+		window.setTimeout(function(){psword1.focus();}, 0);
+	}else if(password1.length<6){
+	    alert("密码不能小于6位");
+	    window.setTimeout(function(){psword1.focus();}, 0);
+	}
+}
+
+function chkpswall(){
+    var psw2 = document.getElementById('password2');
+	var password2 = psw2.value;
+	var pswd1 = document.getElementById("password1").value;
+	if(password2 == ""){
+	    alert("请再次输入密码！");
+		window.setTimeout(function(){psw2.focus();}, 0);
+	}else if(password2!=pswd1){
+	    alert("两次密码不同，请重新输入");
+		window.setTimeout(function(){psw2.focus();}, 0);
+	}
+}
+
+function phonechk(){
+    var tel = document.getElementById("telphone");
+    var telephone = tel.value;
+	if(telephone!=""){
+        if(!telephone.match(/^1[3|4|5|8][0-9]\d{4,8}$/)){
+	    alert("不是完整的11位手机号或者正确的手机号前七位");
+		window.setTimeout(function(){tel.focus();}, 0);
+	    }
+	}
+}
+
+function emailchk(){
+    var eml = document.getElementById("email");
+    var Email = eml.value;
+	var myreg=/(\S)+[@]{1}(\S)+[.]{1}(\w)+/;
+	if(Email!=""){
+	    if(!myreg.test(Email)){
+	    alert("邮箱格式错误");
+		window.setTimeout(function(){eml.focus();}, 0);
+	    }
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="header" class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div id="logo" class="navbar-header">           
+	           <a class="naver-brand" href="" target="_top">
+		       
+	           </a>
+        </div>
+    </div>
+</div>
+
+<form class="form-horizontal container" role="form" method="post" action="register.php">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>必填信息</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" align="right">用户名：
+                <font color="#ff0000">*</font>
+                </td>
+                
+                <td>
+                    <input type="text" id="username" name="username" class="form-control"  onblur="namechk()" placeholder="3-16个字符，只能输入字母或数字"/>
+                    <span id="usertips"></span>
+				</td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" align="right">密码：
+                <font color="#ff0000">*</font>
+                </td>
+                
+                <td>
+                    <input type="password" id="password1" name="password1" class="form-control" placeholder="6-16个字符" onblur="chkpword1()">
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" align="right">确认密码：
+                <font color="#ff0000">*</font>
+                </td>
+                
+                <td>
+                    <input type="password" id="password2" name="password2" class="form-control" onblur="chkpswall()">
+                </td>
+            </tr>
+            
+            <thead>
+            <tr>
+                <th>选填信息</th>
+            </tr>
+          </thead>
+        
+        <tr class="unimportant">
+                <td colspan="2" align="right">性别：
+                <font color="#ff0000"></font>
+                </td>
+                
+                <td width="80%"><select style="WIDTH: 100%;height: 34px;border: 1px solid #cccccc;border-radius: 4px;" name="sex">
+                    <option value="">请选择</option>
+			        <option value="男">-男-</option>
+			        <option value="女">-女-</option>
+                    </select>          
+				</td>
+            </tr>
+        
+        <tr class="unimportant">
+                <td colspan="2" align="right">真是姓名：
+                <font color="#ff0000"></font>
+                </td>
+                
+                <td>
+                    <input type="text" name="realname" class="form-control">
+                </td>
+            </tr>
+            
+         <tr class="unimportant">
+                <td colspan="2" align="right">手机：
+                <font color="#ff0000"></font>
+                </td>
+                
+                <td>
+                    <input type="text" id="telphone" name="telphone" class="form-control" onblur="phonechk()">
+                </td>
+            </tr>
+            
+            <tr class="unimportant">
+                <td colspan="2" align="right">电话：
+                <font color="#ff0000"></font>
+                </td>
+                
+                <td>
+                    <input type="text" id="mobile" name="mobile" class="form-control">
+                </td>
+            </tr>
+            
+            <tr class="unimportant">
+                <td colspan="2" align="right">邮箱：
+                <font color="#ff0000"></font>
+                </td>
+                
+                <td>
+                    <input type="text" id="email" name="email" class="form-control" onblur="emailchk()">
+                </td>
+            </tr>
+            
+            <tr class="unimportant">
+                <td colspan="2" align="right">职位名称：
+                <font color="#ff0000"></font>
+                </td>
+                
+                <td>
+                    <input type="text" name="position" class="form-control">
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="3" align="center"  valign="middle">
+                    <input type="submit" id="submit" name="submit" value="立即注册" style="WIDTH: 100%;height: 34px;border: 1px solid #cccccc;border-radius: 4px;" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+
+</body>
+</html>

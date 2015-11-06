@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="gb2312">
+<title>演示：日期选择器：jquery datepicker的使用</title>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+<style type="text/css">
+.demo{width:500px; margin:20px auto}
+.demo h4{height:32px; line-height:32px; font-size:14px}
+.demo h4 span{font-weight:500; font-size:12px}
+.demo p{line-height:28px;}
+input{width:108px; height:20px; line-height:20px; padding:2px; border:1px solid #d3d3d3}
+</style>
+<script type="text/javascript" src="js/my.js"></script>
+<script type="text/javascript" src="js/jquery-ui-datepicker.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	$("#date_1").datepicker();
+	$("#date_2").datepicker({
+		//navigationAsDateFormat: true,
+		dateFormat: 'yy年mm月dd日'
+	});
+	$("#date_3").datepicker({
+		minDate: -30,
+		maxDate: 0
+	});
+	$("#date_4").datepicker({
+		altField: "#alternate",
+		altFormat: "yy年MMd日,DD"
+	});
+	$("#datepicker").datepicker({
+		showOtherMonths: true,
+		selectOtherMonths: false
+	});
+	$("#date_6").datepicker({
+		showWeek: true
+	});
+	$("#date_7").datepicker({
+		numberOfMonths: 3,
+		showButtonPanel: true
+	});
+	$("#date_8").datepicker({
+		showOn: "button",
+		buttonImage: "images/calendar.gif",
+		buttonImageOnly: true
+	});
+	$("#date_9").datepicker({
+		onSelect: function(dateText,inst){
+			alert("您选择的日期是："+dateText)
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+<div >
+   
+   <div >
+      <h4>1、默认格式：<span>yy-mm-dd</span></h4>
+      <p>日期：<input type="text" id="date_1" readonly /></p>
+   </div>
+   
+   <br/>
+</div>
+</body>
+</html>
